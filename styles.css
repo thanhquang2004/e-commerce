@@ -1,0 +1,130 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+#wrapper {
+  width: auto;
+  height: auto;
+}
+
+#header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding: 0px 20px; /* Giảm padding */
+}
+
+.logo img {
+  width: 80px; /* Giảm kích thước logo */
+  height: 80px;
+  margin: 0 20px; /* Giảm khoảng cách giữa logo và các phần tử khác */
+}
+
+.main-nav {
+  display: flex;
+  gap: 15px; /* Giảm khoảng cách giữa các liên kết */
+  flex-grow: 1;
+}
+
+.main-nav a {
+  color: #000;
+  text-decoration: none;
+  font-size: 14px; /* Giảm kích thước chữ */
+}
+
+.main-nav a:hover {
+  text-decoration: underline;
+}
+
+.searchTerm {
+  height: 30px; /* Giảm chiều cao của ô tìm kiếm */
+  font-size: 14px; /* Giảm kích thước chữ */
+}
+
+.searchButton {
+  width: 40px; /* Giảm chiều rộng của nút tìm kiếm */
+  height: 30px; /* Giảm chiều cao của nút tìm kiếm */
+  font-size: 16px; /* Giảm kích thước chữ */
+}
+
+
+#actions {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+#actions .item img,
+#actions .item_cart img {
+  max-height: 40px;
+}
+
+#menu_left {
+  width: 20%;
+  padding: 20px;
+  border-right: 1px solid #ccc;
+}
+
+#menu_left ul {
+  list-style: none;
+  padding: 0;
+}
+
+#menu_left ul li {
+  margin: 15px 0;
+  position: relative;
+}
+
+#menu_left ul li a {
+  color: #000;
+  text-decoration: none;
+  display: block;
+  padding: 0 16px;
+}
+
+#menu_left ul li:hover {
+  background: gainsboro;
+}
+
+#menu_left .sub-menu {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  width: 200px;
+  display: none;
+  background: #f5f5f5;
+  color: red;
+  border-left: 1px solid #f5f5f5;
+  font-size: 90%;
+  border-radius: 0 10px 10px 0;
+}
+
+#menu_left li:hover .sub-menu {
+  display: block;
+}
+
+#banner {
+  width: 80%;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+#banner .box-right {
+  width: 100%;
+  padding: 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
+#banner .box-right h2 {
+  font-size: 2em;
+  margin: 0;
+}
+
+#banner .box-right p {
+  margin: 20px 0;
+  font-size: 1.2em;
+}
