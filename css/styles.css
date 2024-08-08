@@ -39,7 +39,6 @@ body {
 
 .main-nav a:hover {
   text-decoration: underline;
-  background:#ccc;
   color:black;
 }
 
@@ -182,13 +181,13 @@ main {
 }
 
 .main-banner {
-  width: 80%;
+  width: 90%;
 }
 
 .slider{
   width: auto;
   max-width: 100vw;
-  height: 700px;
+  height: 600px;
   margin: auto;
   position: relative;
   overflow: hidden;
@@ -200,7 +199,7 @@ main {
   left: 0;
   top: 0;
   display: flex;
-  transition: 1s;
+  transition: 1.5s;
 }
 .slider .list img{
   width: 1000px;
@@ -253,4 +252,69 @@ main {
   .slider{
       height: 400px;
   }
+}
+
+#footer {
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  text-align: left;
+  height: auto;
+}
+
+#footer a {
+  color: #fff; /* Đảm bảo rằng các liên kết cũng có màu trắng */
+}
+
+.footer-section {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-section div {
+  flex: 1;
+  margin: 10px;
+  min-width: 200px; /* Đảm bảo chiều rộng tối thiểu */
+}
+
+.footer-section h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-section p, .footer-section a, .footer-section ul {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin: 5px 0;
+}
+
+.footer-section ul.social-links {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+
+.footer-section ul.social-links li {
+  margin-right: 10px;
+}
+
+.footer-section ul.social-links li img {
+  width: 24px;
+  height: 24px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 10px 0;
+  border-top: 1px solid #333;
+  margin-top: 20px;
 }
