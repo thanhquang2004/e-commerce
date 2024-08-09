@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,10 +32,10 @@
                     </button>
                 </div>
                 <div class="item">
-                    <a href="./html/yeuthich.html"><img src="./img/heart_icon.png" alt="User Icon"></a>
+                    <a href="/html/yeuthich.html"><img src="./img/heart_icon.png" alt="User Icon"></a>
                 </div>
                 <div class="item_cart">
-                    <a href="./html/cart.html"><img src="./img/cart_icon.png" alt="Cart Icon"></a>
+                    <a href="/html/cart.html"><img src="./img/cart_icon.png" alt="Cart Icon"></a>
                 </div>
             </div>
         </header>
@@ -39,7 +43,7 @@
     <main>
         <aside id="menu_left">
             <ul>
-                <li><a href="./html/taycamXbox.html">Tay Cầm Xbox</a>
+                <li><a href="/html/taycamXbox.html">Tay Cầm Xbox</a>
                 </li>
                 <li><a href="./html/TaycamA102L.html">Tay Cầm A102L</a></li>
                 <li><a href="./html/Taycam8bitdo.html">Tay Cầm 8Bitdo</a></li>
@@ -97,9 +101,9 @@
                     Số điện thoại :<br>
                     Email : 
                     <ul class="social-links">
-                        <li><a href="#"><img src="./img/Icon-Facebook.png" alt="Facebook"></a></li>
-                        <li><a href="#"><img src="./img/Icon-Twitter.png" alt="Twitter"></a></li>
-                        <li><a href="#"><img src="./img/icon-instagram.png" alt="Instagram"></a></li>
+                        <li><a href="#"><img src="/img/Icon-Facebook.png" alt="Facebook"></a></li>
+                        <li><a href="#"><img src="/img/Icon-Twitter.png" alt="Twitter"></a></li>
+                        <li><a href="#"><img src="/img/icon-instagram.png" alt="Instagram"></a></li>
                     </ul>
                 </address>
             </div>
