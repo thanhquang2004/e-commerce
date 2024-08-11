@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 ?>
 
@@ -7,7 +7,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Đăng nhập</title>
+    <title>Đăng ký tài khoản</title>
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/login.css" />
   </head>
@@ -15,37 +15,36 @@
   <body>
     <header id="header">
         <div class="logo">
-            <img src="img/logo.png" alt="Logo">
+            <img src="./img/logo.png" alt="Logo">
         </div>
         <nav class="main-nav">
-          <a href="./index.html">Trang chủ</a>
-          <a href="html/contact.html">Liên Hệ</a>
-          <a href="html/about.html">About</a>
-      </nav>
-
+            <a href="./html/home.html">Trang chủ</a>
+            <a href="./html/contact.html">Liên Hệ</a>
+            <a href="./html/about.html">About</a>
+        </nav>
         <div id="actions">
             <div class="search">
                 <input type="text" class="searchTerm" placeholder="What are you looking for?">
                 <button type="submit" class="searchButton">
-                    <i class="fa fa-search"><img src="img/Search_button.png" alt="Search"></i>
+                    <i class="fa fa-search"><img src="./img/Search_button.png" alt="Search"></i>
                 </button>
             </div>
             <div class="item">
-                <a href="/html/yeuthich.html"><img src="img/heart_icon.png" alt="User Icon"></a>
+                <a href="./html/yeuthich.html"><img src="./img/heart_icon.png" alt="User Icon"></a>
             </div>
             <div class="item_cart">
-                <a href="/html/cart.html"><img src="img/cart_icon.png" alt="Cart Icon"></a>
+                <a href="./html/cart.php"><img src="./img/cart_icon.png" alt="Cart Icon"></a>
             </div>
         </div>
     </header>
       <div id="main-content">
         <div class="container">
           <div>
-            <img src="img/authscreen.jpg" class="login-image" alt="User Icon" />
+            <img src="./img/authscreen.jpg" class="login-image" alt="User Icon" />
           </div>
           <div style="margin-top: 100px; width: 500px">
-            <h1>Đăng nhập</h1>
-            <p><b>Vui lòng điền thông tin để đăng nhập</b></p>
+            <h1>Đăng ký tài khoản</h1>
+            <p><b>Vui lòng điền thông tin để đăng ký tài khoản</b></p>
             <form action="/login" method="POST">
               <div class="login-form">
                 <label for="email" class="form-label"><b>Email</b></label>
@@ -69,10 +68,10 @@
               </div>
               <br />
               <div>
-                <button type="submit" class="registerbtn">Đăng nhập</button>
+                <button type="submit" class="registerbtn">Đăng ký</button>
               </div>
               <div class="container signin">
-                <p>Bạn chưa có tài khoản? <a href="./signup.php">Đăng ký</a>.</p>
+                <p>Bạn đã có tài khoản? <a href="./login.php">Đăng nhập</a>.</p>
               </div>
             </form>
           </div>
