@@ -76,37 +76,110 @@ body {
   #actions .item_cart img {
     max-height: 40px;
   }
-#main-content {
+
+  body {
+    font-family: Arial, sans-serif;
+}
+.container {
     display: flex;
-    align-items: center;
+    flex-direction: row;
     justify-content: space-between;
-    padding: 50px;
+    align-items: center;
     background-color: white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
 }
-
-#main-content .text-content {
-    flex: 1;
-    margin-right: 20px;
+.text-section {
+    max-width: 60%;
 }
-
-#main-content h2 {
-    text-align: center;
-    font-size: 50px;
-    margin-bottom: 30px;
+h1 {
+    color: #e30613;
+    font-size: 36px;
 }
-
-#main-content p {
-    font-size: 20px;
-    line-height: 1.6;
+h2 {
+    color: #000;
+    font-size: 28px;
+}
+p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+.contact-info {
+    margin-top: 20px;
+}
+.contact-info b {
+    color: #e30613;
+}
+.contact-info p {
+    margin: 5px 0;
+}
+.chat-buttons {
+    margin-top: 20px;
+}
+.chat-buttons img {
+    width: 100px;
+    margin: 5px;
+}
+.image-section img {
+    width: 100%;
+    max-width: 350px;
+}
+.warranty-section {
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+}
+.warranty-section h3 {
+    color: #e30613;
+    font-size: 24px;
+}
+.warranty-conditions {
+    margin-top: 20px;
+    padding-left: 20px;
+}
+.warranty-conditions li {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.warranty-image {
+    margin-top: 20px;
+}
+.warranty-image img {
+    width: 100%;
+    max-width: 600px;
+}
+.section-2, .section-3 {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+}
+.section-2 p, .section-3 p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+.section-2 h3, .section-3 h3 {
+    color: #e30613;
+    font-size: 24px;
     margin-bottom: 20px;
 }
-
-#main-content .image-content img {
-    max-width: 100%;
-    height: auto;
+.section-2 .warranty-period, .section-2 .additional-warranty {
+    margin-top: 10px;
+}
+.section-2 .warranty-period p, .section-2 .additional-warranty p {
+    background-color: #fff;
+    padding: 15px;
     border-radius: 10px;
-    width: 500px;
+    margin-bottom: 10px;
+}
+.section-3 .option {
+    margin-top: 20px;
+}
+.section-3 .option p {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 #footer {
