@@ -19,9 +19,11 @@
                 <img src="./img/logo.png" alt="Logo">
             </div>
             <nav class="main-nav">
+
                 <a href="./index.php">Trang chủ</a>
                 <a href="./html/contact.php">Liên Hệ</a>
                 <a href="./html/about.php">About</a>
+
                 <a href="./login.php">Đăng Ký</a>
             </nav>
             <div id="actions">
