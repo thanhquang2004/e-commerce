@@ -18,9 +18,9 @@
             <img src="img/logo.png" alt="Logo">
         </div>
         <nav class="main-nav">
-          <a href="./index.html">Trang chủ</a>
-          <a href="html/contact.html">Liên Hệ</a>
-          <a href="html/about.html">About</a>
+          <a href="./index.php">Trang chủ</a>
+          <a href="html/contact.php">Liên Hệ</a>
+          <a href="html/about.php">About</a>
       </nav>
 
         <div id="actions">
@@ -31,10 +31,10 @@
                 </button>
             </div>
             <div class="item">
-                <a href="/html/yeuthich.html"><img src="img/heart_icon.png" alt="User Icon"></a>
+                <a href="./html/yeuthich.php"><img src="./img/heart_icon.png" alt="User Icon"></a>
             </div>
             <div class="item_cart">
-                <a href="/html/cart.html"><img src="img/cart_icon.png" alt="Cart Icon"></a>
+                <a href="./html/cart.php"><img src="./img/cart_icon.png" alt="Cart Icon"></a>
             </div>
         </div>
     </header>
