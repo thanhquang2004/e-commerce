@@ -20,9 +20,9 @@
           <img src="../img/logo.png" alt="Logo" />
         </div>
         <nav class="main-nav">
-          <a href="../index.html">Trang chủ</a>
-          <a href="html/contact.html">Liên Hệ</a>
-          <a href="html/about.html">About</a>
+          <a href="../index.php">Trang chủ</a>
+          <a href="../html/contactd.php">Liên Hệ</a>
+          <a href="../html/aboutd.php">About</a>
           <a href="../login.php">Đăng Ký</a>
         </nav>
         <div id="actions">
@@ -39,12 +39,12 @@
             </button>
           </div>
           <div class="item">
-            <a href="../html/yeuthich.html"
+            <a href="../html/yeuthichd.php"
               ><img src="../img/heart_icon.png" alt="User Icon"
             /></a>
           </div>
           <div class="item_cart">
-            <a href="html/cart.html"
+            <a href="html/cartd.php"
               ><img src="../img/cart_icon.png" alt="Cart Icon"
             /></a>
           </div>
@@ -53,7 +53,7 @@
     </div>
     <div class="container">
       <div class="page">
-        <p><a class="home" href="/html/home.html">Trang chủ</a></p>
+        <p><a class="home" href="../index.php">Trang chủ</a></p>
         <p>/</p>
         <p><a>Giỏ hàng</a></p>
       </div>

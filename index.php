@@ -19,10 +19,10 @@
                 <img src="./img/logo.png" alt="Logo">
             </div>
             <nav class="main-nav">
-                <a href="./index.html">Trang chủ</a>
-                <a href="./html/contact.html">Liên Hệ</a>
-                <a href="./html/about.html">About</a>
-                <a href="./login.html">Đăng Ký</a>
+                <a href="./index.php">Trang chủ</a>
+                <a href="./html/contact.php">Liên Hệ</a>
+                <a href="./html/about.php">About</a>
+                <a href="./login.php">Đăng Ký</a>
             </nav>
             <div id="actions">
                 <div class="search">
@@ -32,10 +32,10 @@
                     </button>
                 </div>
                 <div class="item">
-                    <a href="/html/yeuthich.html"><img src="./img/heart_icon.png" alt="User Icon"></a>
+                    <a href="./html/yeuthich.php"><img src="./img/heart_icon.png" alt="User Icon"></a>
                 </div>
                 <div class="item_cart">
-                    <a href="/html/cart.html"><img src="./img/cart_icon.png" alt="Cart Icon"></a>
+                    <a href="./html/cart.php"><img src="./img/cart_icon.png" alt="Cart Icon"></a>
                 </div>
             </div>
         </header>
@@ -43,13 +43,12 @@
     <main>
         <aside id="menu_left">
             <ul>
-                <li><a href="/html/taycamXbox.html">Tay Cầm Xbox</a>
-                </li>
-                <li><a href="./html/TaycamA102L.html">Tay Cầm A102L</a></li>
-                <li><a href="./html/Taycam8bitdo.html">Tay Cầm 8Bitdo</a></li>
-                <li><a href="./html/PS4.html">Tay Cầm PS4</a></li>
-                <li><a href="./html/Razer.html">Tay Cầm Razer</a></li>
-                <li><a href="./html/phukien.html">Phụ Kiện Tay Cầm</a></li>
+                <li><a href="./html/taycamXbox.php">Tay Cầm Xbox</a></li>
+                <li><a href="./html/TaycamA102L.php">Tay Cầm A102L</a></li>
+                <li><a href="./html/Taycam8bitdo.php">Tay Cầm 8Bitdo</a></li>
+                <li><a href="./html/PS4.php">Tay Cầm PS4</a></li>
+                <li><a href="./html/Razer.php">Tay Cầm Razer</a></li>
+                <li><a href="./html/phukien.php">Phụ Kiện Tay Cầm</a></li>
             </ul>
         </aside>
         <section class="main-banner">
@@ -101,28 +100,28 @@
                     Số điện thoại :<br>
                     Email : 
                     <ul class="social-links">
-                        <li><a href="#"><img src="/img/Icon-Facebook.png" alt="Facebook"></a></li>
-                        <li><a href="#"><img src="/img/Icon-Twitter.png" alt="Twitter"></a></li>
-                        <li><a href="#"><img src="/img/icon-instagram.png" alt="Instagram"></a></li>
+                        <li><a href="#"><img src="../img/Icon-Facebook.png" alt="Facebook"></a></li>
+                        <li><a href="#"><img src="../img/Icon-Twitter.png" alt="Twitter"></a></li>
+                        <li><a href="#"><img src="../img/icon-instagram.png" alt="Instagram"></a></li>
                     </ul>
                 </address>
             </div>
             <div class="account">
                 <h3>Thông Tin</h3>
                 <ul>
-                    <li><a href="/myaccount">Tài Khoản</a></li>
-                    <li><a href="/login.html">Login / Register</a></li>
-                    <li><a href="/html/cart.html">Giỏ Hàng</a></li>
-                    <li><a href="/index.html">Cửa Hàng</a></li>
+                    <li><a href="../myaccount">Tài Khoản</a></li>
+                    <li><a href="../login.php">Login / Register</a></li>
+                    <li><a href="../html/cart.php">Giỏ Hàng</a></li>
+                    <li><a href="../index.php">Cửa Hàng</a></li>
                 </ul>
             </div>
             <div class="quick-link">
                 <h3>Chính sách</h3>
                 <ul>
-                    <li><a href="/html/privacy.html">Chính sách bảo mật</a></li>
-                    <li><a href="/html/terms.html">Điều khoản sử dụng</a></li>
-                    <li><a href="/html/faq.html">Câu hỏi thường gặp</a></li>
-                    <li><a href="/html/contact.html">Liên Hệ</a></li>
+                    <li><a href="../html/privacy.php">Chính sách bảo mật</a></li>
+                    <li><a href="../html/terms.php">Điều khoản sử dụng</a></li>
+                    <li><a href="../html/faq.php">Câu hỏi thường gặp</a></li>
+                    <li><a href="../html/contact.php">Liên Hệ</a></li>
                 </ul>
             </div>
             <div class="exclusive">
@@ -133,7 +132,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; Copyright Rimel 2022. All rights reserved</p>
+            <p>&copy;</p>
         </div>
     </footer>
     

@@ -18,9 +18,9 @@
             <img src="./img/logo.png" alt="Logo">
         </div>
         <nav class="main-nav">
-            <a href="./html/home.html">Trang chủ</a>
-            <a href="./html/contact.html">Liên Hệ</a>
-            <a href="./html/about.html">About</a>
+            <a href="./index.php">Trang chủ</a>
+            <a href="./html/contact.php">Liên Hệ</a>
+            <a href="./html/about.php">About</a>
         </nav>
         <div id="actions">
             <div class="search">
@@ -30,7 +30,7 @@
                 </button>
             </div>
             <div class="item">
-                <a href="./html/yeuthich.html"><img src="./img/heart_icon.png" alt="User Icon"></a>
+                <a href="./html/yeuthich.php"><img src="./img/heart_icon.png" alt="User Icon"></a>
             </div>
             <div class="item_cart">
                 <a href="./html/cart.php"><img src="./img/cart_icon.png" alt="Cart Icon"></a>
@@ -45,7 +45,7 @@
           <div style="margin-top: 100px; width: 500px">
             <h1>Đăng ký tài khoản</h1>
             <p><b>Vui lòng điền thông tin để đăng ký tài khoản</b></p>
-            <form action="/login" method="POST">
+            <form action="./login" method="POST">
               <div class="login-form">
                 <label for="email" class="form-label"><b>Email</b></label>
                 <input
