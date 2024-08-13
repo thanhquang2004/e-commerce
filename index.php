@@ -22,7 +22,7 @@
                 <a href="./index.html">Trang chủ</a>
                 <a href="./html/contact.html">Liên Hệ</a>
                 <a href="./html/about.html">About</a>
-                <a href="./login.html">Đăng Ký</a>
+                <a href="./login.php">Đăng Ký</a>
             </nav>
             <div id="actions">
                 <div class="search">
@@ -35,7 +35,7 @@
                     <a href="/html/yeuthich.html"><img src="./img/heart_icon.png" alt="User Icon"></a>
                 </div>
                 <div class="item_cart">
-                    <a href="/html/cart.html"><img src="./img/cart_icon.png" alt="Cart Icon"></a>
+                    <a href="./html/cart.php"><img src="./img/cart_icon.png" alt="Cart Icon"></a>
                 </div>
             </div>
         </header>

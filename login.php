@@ -46,7 +46,7 @@
           <div style="margin-top: 100px; width: 500px">
             <h1>Đăng nhập</h1>
             <p><b>Vui lòng điền thông tin để đăng nhập</b></p>
-            <form action="/login" method="POST">
+            <form action="./php/logic/xulylogin.php" method="POST">
               <div class="login-form">
                 <label for="email" class="form-label"><b>Email</b></label>
                 <input
