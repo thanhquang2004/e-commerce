@@ -131,22 +131,18 @@
         <button onclick="updateTotalMoney()">Cập nhập giỏi hàng</button>
       </div>
       <div class="total-table">
-        <div></div>
-        
-      </div>
-    </div>
-    <script>
-      function updateTotalMoney() {
-
-        document.getElementsByClassName("total-table").innerHTML = `
-        <div class="cart-total">
+      <div class="cart-total">
           <p>Tổng tiền giỏ hàng</p>
           <hr />
           <p>Tổng tiền: <span class="money-total"></span></p>
           <hr />
           <button>Thanh toán</button>
-        </div>`
-
+        </div>
+        
+      </div>
+    </div>
+    <script>
+      function updateTotalMoney() {
         const totalElements = document.getElementsByClassName("total");
         let totalMoney = 0;
         for (let i = 0; i < totalElements.length; i++) {
@@ -159,6 +155,8 @@
         const moneyTotalElement = document.querySelector(".money-total");
         moneyTotalElement.innerText = totalMoney.toLocaleString("vi-VN") + "đ";
       }
+
+      updateTotalMoney();
     </script>
   </body>
 </html>
