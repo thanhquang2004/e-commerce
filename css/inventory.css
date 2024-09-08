@@ -123,7 +123,7 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.3s ease-in-out;
-    width: calc(33.333% - 20px);
+    width: calc(20% - 20px);
     margin-bottom: 20px;
 }
 
@@ -132,8 +132,9 @@ body {
 }
 
 .product-img {
-    height: 200px;
     overflow: hidden;
+    min-height: 300px;
+    max-height: 500px;
 }
 
 .product-img img {
@@ -213,6 +214,46 @@ body {
     background-color: #0b7dda;
 }
 
+.add-prod-page .product-form {
+    margin-bottom: 20px;
+}
+
+.add-prod-page .form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.add-prod-page .form-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.add-prod-page .form-field:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.add-prod-page button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.add-prod-page button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
 #footer {
     background-color: #000;
     color: #fff;
@@ -277,3 +318,4 @@ body {
     border-top: 1px solid #333;
     margin-top: 20px;
 }
+

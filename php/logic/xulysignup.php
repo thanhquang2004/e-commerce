@@ -11,15 +11,16 @@ if(isset($_POST['email']) && isset($_POST['psw'])) {
     if($result->num_rows > 0) {
         echo "Email đã tồn tại";
     } else {
+        
         // Tạo mới một mục trong bảng 'cart'
-        $sql_cart = "INSERT INTO carts (productId, quantity) VALUES (NULL, NULL)";
+        $sql_cart = "INSERT INTO carts (cartItemId) VALUES (NULL)";
         
         if($conn->query($sql_cart) === TRUE) {
             // Lấy cartId vừa được tạo
             $cartId = $conn->insert_id;
 
             // Sử dụng cartId để tạo người dùng mới
-            $sql_user = "INSERT INTO users (email, password, cartId) VALUES ('$email', '$password', '$cartId')";
+            $sql_user = "INSERT INTO users (email, password, cartId, role) VALUES ('$email', '$password', '$cartId', 'user')";
             if($conn->query($sql_user) === TRUE) {
                 echo "Đăng ký thành công";
                 header("Location: ../../login.php");

@@ -1,3 +1,25 @@
+<?php
+require_once '../php/logic/connect.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $cartData = json_decode($_POST['cartData'], true);
+    $totalAmount = $_POST['totalAmount'];
+} else {
+    // Redirect to cart page if accessed directly
+    header('Location: cart.php');
+    exit();
+}
+
+// Function to get product details
+function getProductDetails($conn, $productId) {
+    $sql = "SELECT name, image FROM products WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $productId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_assoc();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +27,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tay Cầm Chơi Game PC</title>
-    <link rel="stylesheet" href="../css/xbox.css">
+    <link rel="stylesheet" href="../css/about.css">
+    <link rel="stylesheet" href="../css/checkout.css">
 </head>
 
 <body>
@@ -36,55 +59,33 @@
             </div>
         </header>
     </div>
-    <main>
-        <!-- Trang san pham -->
-        <div class="product">
-            <div class="headline">
-                <h2>Tay Cầm Xbox</h2>
+    <main id="main-content">
+        <h1>Xác nhận đơn hàng</h1>
+        <div class="order-summary">
+            <br/>
+            <h2>Tóm tắt đơn hàng</h2>
+            <?php foreach ($cartData as $item): 
+                $productDetails = getProductDetails($conn, $item['productId']);
+            ?>
+                <div class="order-item">
+                    <img src="../img/product/<?php echo $productDetails['image']; ?>" alt="<?php echo $productDetails['name']; ?>">
+                    <div class="item-details">
+                        <h3><?php echo $productDetails['name']; ?></h3>
+                        <p>Số lượng: <?php echo $item['quantity']; ?></p>
+                        <p>Giá: <?php echo number_format($item['price'], 0, ',', '.'); ?>đ</p>
+                        <p>Tổng: <?php echo number_format($item['total'], 0, ',', '.'); ?>đ</p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+            <div class="total-amount">
+                <h3>Tổng cộng: <?php echo number_format($totalAmount, 0, ',', '.'); ?>đ</h3>
             </div>
-            
-            <ul class="products">
-                <?php
-                include '../php/logic/connect.php';
-                $sql = "SELECT * FROM products WHERE category = 'Tay cầm Xbox'";
-                $result = $conn->query($sql);
-                if ($result->num_rows > 0) {
-                    while($row = $result->fetch_assoc()) {
-                        echo '<li>';
-                        echo '<div class="product-item">';
-                        echo '<div class="product-top">';
-                        echo '<a href="" class="product-thumb">';
-                        echo '<img src="../img/Xbox/' . $row["image"] . '" alt="' . $row["name"] . '">';
-                        echo '</a>';
-                        echo '<form action="../php/logic/xulyaddtocart.php" method="POST">';
-                        echo '<input type="hidden" name="productId" value="' . $row["id"] . '">';
-                        echo '<input type="hidden" name="productName" value="' . $row["name"] . '">';
-                        echo '<input type="hidden" name="productPrice" value="' . $row["price"] . '">';
-                        echo '<input type="hidden" name="productImage" value="../img/product/' . $row["image"] . '">';
-                        echo '<a class="addtocart"><button style="border: none; color: white; background: none; padding: 0; cursor: pointer;" type="submit" class="addtocart" >Thêm Vào Giỏ Hàng</button></a>';
-                        echo '</form>';
-                        echo '</div>';
-                        echo '<div class="product-info">';
-                        echo '<a href="" class="product-name">' . $row["name"] . '</a>';
-                        echo '<div class="product-price">' . number_format($row["price"]) . '₫</div>';
-                        echo '</div>';
-                        echo '</div>';
-                        echo '</li>';
-                    }
-                } else {
-                    echo "0 results";
-                }
-                $conn->close();
-                ?>
-            </ul>
         </div>
-        <?php
-        session_start();
-        if(isset($_SESSION['alert'])) {
-            echo '<script>alert("' . $_SESSION['alert'] . '");</script>';
-            unset($_SESSION['alert']);
-        }
-        ?>
+        <form action="../php/logic/xulyorder.php" method="POST">
+            <input type="hidden" name="cartData" value='<?php echo json_encode($cartData); ?>'>
+            <input type="hidden" name="totalAmount" value="<?php echo $totalAmount; ?>">
+            <button type="submit">Xác nhận đặt hàng</button>
+        </form>
     </main>
     <footer id="footer">
         <div class="footer-section">
@@ -126,12 +127,7 @@
                     dịch vụ chất lượng với giá thành phù hợp với mọi game thủ.</h4>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy;</p>
-        </div>
     </footer>
-    
-    
 </body>
 
 </html>

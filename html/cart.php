@@ -1,5 +1,63 @@
 <?php
+require_once '../php/logic/connect.php';
 
+// Get email from cookie
+$email = isset($_COOKIE['email']) ? $_COOKIE['email'] : '';
+
+// Function to get cartId by email
+function getCartIdByEmail($conn, $email) {
+    $sql = "SELECT cartId FROM users WHERE email = ?";
+    $stmt = $conn->prepare($sql);
+    if ($stmt === false) {
+        error_log("Prepare statement error: " . $conn->error);
+        return null;
+    }
+    $stmt->bind_param("s", $email);
+    if (!$stmt->execute()) {
+        error_log("Execute error: " . $stmt->error);
+        return null;
+    }
+    $result = $stmt->get_result();
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        return $row['cartId'];
+    }
+    return null;
+}
+
+// Function to get cart items
+function getCartItems($conn, $cartId) {
+    $cartItems = array();
+    if ($cartId) {
+        $sql = "SELECT ci.*, p.name, p.price, p.image FROM cart_items ci 
+                JOIN products p ON ci.productId = p.id 
+                WHERE ci.cartId = ?";
+        $stmt = $conn->prepare($sql);
+        if ($stmt === false) {
+            error_log("Prepare statement error: " . $conn->error);
+            return $cartItems;
+        }
+        $stmt->bind_param("i", $cartId);
+        if (!$stmt->execute()) {
+            error_log("Execute error: " . $stmt->error);
+            return $cartItems;
+        }
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $cartItems[] = $row;
+        }
+    }
+    return $cartItems;
+}
+
+// Get cartId for the user
+$cartId = getCartIdByEmail($conn, $email);
+
+// Fetch cart items
+$cartItems = getCartItems($conn, $cartId);
+
+// Close the database connection
+mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -66,82 +124,44 @@
           <p class="item">Số lượng</p>
           <p class="item">Tổng tiền</p>
         </div>
-        <script>
-          document.addEventListener("DOMContentLoaded", () => {
-            function renderProducts() {
-              const container = document.querySelector(".cart");
-
-              products.forEach((product) => {
-                const productHTML = `
-        <div id="${product.id}" class="product">
-          <div class="product-info">
-            <img src="../img/anh1.jpg" alt="Product" />
-            <p>${product.name}</p>
+        <?php foreach ($cartItems as $item): ?>
+          <div id="<?php echo $item['productId']; ?>" class="product">
+            <div class="product-info">
+              <img src="../img/product/<?php echo $item['image']; ?>" alt="Product" />
+              <p><?php echo $item['name']; ?></p>
+            </div>
+            <p class="product-item"><span class="price"><?php echo number_format($item['price'], 0, ',', '.'); ?></span>đ</p>
+            <div class="product-item">
+              <input class="quantity" type="number" value="<?php echo $item['quantity']; ?>" min="1" onchange="updateItemTotal(this)" />
+            </div>
+            <p class="product-item"><span class="total"><?php echo number_format($item['price'] * $item['quantity'], 0, ',', '.'); ?></span>đ</p>
           </div>
-          <p class="product-item"><span class="price">${product.price}</span>đ</p>
-          <div class="product-item">
-            <input class="quantity" type="number" value="${product.quantity}" min="0" />
-          </div>
-          <p class="product-item"><span class="total"></span></p>
-        </div>
-       `;
-                container.innerHTML += productHTML;
-              });
-            }
-
-            function totalItem(id) {
-              const productElement = document.getElementById(id);
-              const quantityElement =
-                productElement.getElementsByClassName("quantity")[0];
-              const priceElement =
-                productElement.getElementsByClassName("price")[0];
-              const totalElement =
-                productElement.getElementsByClassName("total")[0];
-
-              function updateTotal() {
-                let quantity = parseInt(quantityElement.value);
-
-                // Nếu số lượng dưới 0, đặt về 0
-                if (quantity < 0) {
-                  quantity = 0;
-                  quantityElement.value = 0;
-                }
-
-                const price = parseFloat(
-                  priceElement.innerText.replace(/đ/, "").replace(/,/g, "")
-                );
-                const total = quantity * price;
-                totalElement.innerText = total.toLocaleString("vi-VN") + "đ";
-              }
-
-              // Initial total calculation
-              updateTotal();
-
-              // Add event listener to update total when quantity changes
-              quantityElement.addEventListener("input", updateTotal);
-            }
-
-            renderProducts();
-            products.forEach((product) => totalItem(product.id));
-          });
-        </script>
+        <?php endforeach; ?>
       </div>
       <div class="btn">
-        <button>Trở lại mua hàng</button>
-        <button onclick="updateTotalMoney()">Cập nhập giỏi hàng</button>
+        <button onclick="window.location.href='../index.php'">Trở lại mua hàng</button>
+        <button onclick="updateCart()">Cập nhật giỏ hàng</button>
       </div>
       <div class="total-table">
-      <div class="cart-total">
+        <div class="cart-total">
           <p>Tổng tiền giỏ hàng</p>
           <hr />
           <p>Tổng tiền: <span class="money-total"></span></p>
           <hr />
-          <button>Thanh toán</button>
+          <button onclick="checkout()">Thanh toán</button>
         </div>
-        
       </div>
     </div>
     <script>
+      function updateItemTotal(input) {
+        const productDiv = input.closest('.product');
+        const price = parseFloat(productDiv.querySelector('.price').innerText.replace(/\./g, '').replace('đ', ''));
+        const quantity = parseInt(input.value);
+        const total = price * quantity;
+        productDiv.querySelector('.total').innerText = total.toLocaleString('vi-VN');
+        updateTotalMoney();
+      }
+
       function updateTotalMoney() {
         const totalElements = document.getElementsByClassName("total");
         let totalMoney = 0;
@@ -154,6 +174,69 @@
         }
         const moneyTotalElement = document.querySelector(".money-total");
         moneyTotalElement.innerText = totalMoney.toLocaleString("vi-VN") + "đ";
+      }
+
+      function updateCart() {
+        // Here you would typically send an AJAX request to update the cart on the server
+        // For now, we'll just update the totals on the page
+        const products = document.getElementsByClassName('product');
+        for (let product of products) {
+          const quantity = product.querySelector('.quantity').value;
+          const price = parseFloat(product.querySelector('.price').innerText.replace(/\./g, '').replace('đ', ''));
+          const total = quantity * price;
+          product.querySelector('.total').innerText = total.toLocaleString('vi-VN') + 'đ';
+        }
+        updateTotalMoney();
+        alert('Giỏ hàng đã được cập nhật!');
+      }
+
+      function checkout() {
+        const products = document.getElementsByClassName('product');
+        const cartData = [];
+        let totalAmount = 0;
+
+        for (let product of products) {
+            const productId = product.id;
+            const quantity = parseInt(product.querySelector('.quantity').value);
+            const price = parseFloat(product.querySelector('.price').innerText.replace(/\./g, '').replace('đ', ''));
+            const total = quantity * price;
+            const name = product.querySelector('.product-info p').innerText;
+            const image = product.querySelector('.product-info img').src.split('/').pop();
+            
+            cartData.push({
+                productId: productId,
+                quantity: quantity,
+                price: price,
+                total: total,
+                name: name,
+                image: image
+            });
+
+            totalAmount += total;
+        }
+
+        // Create a form and add cart data as hidden fields
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = 'checkout.php';
+
+        // Add cart data
+        const cartDataInput = document.createElement('input');
+        cartDataInput.type = 'hidden';
+        cartDataInput.name = 'cartData';
+        cartDataInput.value = JSON.stringify(cartData);
+        form.appendChild(cartDataInput);
+
+        // Add total amount
+        const totalAmountInput = document.createElement('input');
+        totalAmountInput.type = 'hidden';
+        totalAmountInput.name = 'totalAmount';
+        totalAmountInput.value = totalAmount;
+        form.appendChild(totalAmountInput);
+
+        // Append form to body and submit
+        document.body.appendChild(form);
+        form.submit();
       }
 
       updateTotalMoney();
